@@ -1,26 +1,50 @@
-const gridContainer = document.querySelector("#grid-container");
+const box = document.querySelector("#box");
 
-const gridSize = 16;
+const gridSizeButton = document.querySelector("#grid-size-button");
 
-for (let i = 0; i < gridSize; i++) {
-    const gridColumn = document.createElement("div");
-    gridColumn.classList.add("grid-column");
-    gridContainer.appendChild(gridColumn);
-    for (let j = 0; j < gridSize; j++) {
-        const gridCell = document.createElement("div");
-        gridCell.classList.add("grid-cell")
-        gridColumn.appendChild(gridCell);
-    };
+function createGrid(gridSize) {
+    const gridContainer = document.createElement("div");
+    gridContainer.setAttribute("id", "grid-container");
+    box.appendChild(gridContainer);
+    for (let i = 0; i < gridSize; i++) {
+        const gridColumn = document.createElement("div");
+        gridColumn.classList.add("grid-column");
+        gridContainer.appendChild(gridColumn);
+        for (let j = 0; j < gridSize; j++) {
+            const gridCell = document.createElement("div");
+            gridCell.classList.add("grid-cell")
+            gridColumn.appendChild(gridCell);
+        };
+    };    
 };
 
-const gridCells = document.querySelectorAll(".grid-cell");
-const gridColumn = document.querySelector(".grid-column");
+function eraseGrid() {
+    const gridContainer = document.querySelector("#grid-container");
+    box.removeChild(gridContainer);
+};
 
-gridCells.forEach(cell => {
-    cell.style.height = `calc(min(100vw, 90vh) / ${gridSize})`
-    let opacity = 0;
-    cell.addEventListener("mouseenter", () => {
-        opacity += 10;
-        cell.style.opacity = `${opacity}%`;
+function setCells() {
+    const gridCells = document.querySelectorAll(".grid-cell");
+
+    gridCells.forEach(cell => {
+        cell.style.height = `calc(min(100vw, 85vh) / ${gridSize})`
+        let opacity = 0;
+        cell.addEventListener("mouseenter", () => {
+            opacity += 10;
+            cell.style.opacity = `${opacity}%`;
+        });
     });
+};
+
+gridSizeButton.addEventListener("click", () => {
+    eraseGrid();
+    gridSize = prompt("Enter grid length/width:");
+    createGrid(gridSize);
+    setCells();
 });
+
+gridSize = 16;
+
+createGrid(gridSize);
+
+setCells();
