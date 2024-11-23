@@ -1,17 +1,17 @@
 #grid-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 90vh;
+    margin: 0 auto;
+    width: min(100vw, 90vh);
 }
 
-.grid-row {
+.grid-column {
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
 }
 
 .grid-cell {
-    width: 0;
+    height: 0;
     background-color: #000;
     opacity: 0%;
 }
