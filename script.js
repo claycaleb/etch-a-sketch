@@ -27,10 +27,10 @@ function setCells() {
     const gridCells = document.querySelectorAll(".grid-cell");
 
     gridCells.forEach(cell => {
-        cell.style.height = `calc(min(100vw, 85vh) / ${gridSize})`
+        cell.style.height = `calc(min(100vw, 85vh) / ${gridSize})`;
         let opacity = 0;
         cell.addEventListener("mouseenter", () => {
-            opacity += 10;
+            opacity < 100 ? opacity += 10 : opacity;
             cell.style.opacity = `${opacity}%`;
         });
     });
@@ -38,7 +38,10 @@ function setCells() {
 
 gridSizeButton.addEventListener("click", () => {
     eraseGrid();
-    gridSize = prompt("Enter grid length/width:");
+    gridSize = prompt("Enter grid length/width (min 2, max 100):");
+    while (gridSize < 2 || gridSize > 100) {
+        gridSize = prompt("Invalid input. Enter grid length/width (min 1, max 100):");
+    };
     createGrid(gridSize);
     setCells();
 });
