@@ -7,10 +7,31 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body> 
-    
-    <button id="grid-size-button">Enter grid length/width</button>
-    <div id="box"></div>
-    
+    <h1>Etch-a-Sketch</h1>
+    <div class="container">
+        <div class="controls">
+            <input type="color" id="color-picker">
+            <fieldset>
+                <legend>Select a fill type:</legend>
+                <div>
+                    <input type="radio" name="fill-type" id="solid" value="solid" checked>
+                    <label for="solid">Solid</label>
+                </div>
+                <div>
+                    <input type="radio" name="fill-type" id="darken" value="darken">
+                    <label for="solid">Darken</label>
+                </div>
+            </fieldset>
+
+            <div id="range-container">
+                <input type="range" name="grid-size" id="grid-size-range" min="4" max="100">
+                <p><output id="grid-size-value"></output></p>
+            </div>
+            <button id="grid-size-button">Apply</button>
+            <button id="clear-button">Clear</button>
+        </div>
+        <div id="box"></div>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>

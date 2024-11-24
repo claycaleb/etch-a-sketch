@@ -2,10 +2,17 @@ body {
     text-align: center;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
 #box {
     border: 2px solid black;
-    width: min(100vw, 85vh);
-    margin: 0 auto;
+    border-radius: 12px;
+    width: min(100vw, 75vh);
+    overflow: hidden;
 }
 
 #grid-size-button {
