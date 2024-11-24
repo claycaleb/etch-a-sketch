@@ -40,7 +40,7 @@ gridSizeButton.addEventListener("click", () => {
     eraseGrid();
     gridSize = prompt("Enter grid length/width (min 2, max 100):");
     while (gridSize < 2 || gridSize > 100) {
-        gridSize = prompt("Invalid input. Enter grid length/width (min 1, max 100):");
+        gridSize = prompt("Invalid input. Enter grid length/width (min 2, max 100):");
     };
     createGrid(gridSize);
     setCells();
